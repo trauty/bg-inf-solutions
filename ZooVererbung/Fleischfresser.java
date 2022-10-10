@@ -1,98 +1,91 @@
+
 import java.util.ArrayList;
+public class Fleischfresser extends Tier {
+  private boolean istJaeger;
 
-public class Fleischfresser extends Tier
-{
-    private boolean istJaeger;
-    private ArrayList<Tier> mageninhalt = new ArrayList<>();
+  private ArrayList<Tier> mageninhalt =  new ArrayList<>();
 
-    public Fleischfresser(String name, double gewicht, boolean lebendig, boolean istJaeger, Zoo zoo)
-    {
+  public Fleischfresser(String name, double gewicht, boolean lebendig, boolean istJaeger, Zoo zoo) {
         super(name, gewicht, lebendig, zoo);
         this.istJaeger = istJaeger;
-    }
+  }
 
-    public void friss(Tier beutetier)
-    {
+  public void friss(Tier beutetier) {
         if (beutetier != this)
         {
-            ausgabe(beutetier);
-            return;
+            if (beutetier.getZoo() == this.getZoo())
+            {
+                if (!beutetier.istLebendig())
+                {
+                    if (this.istLebendig())
+                    {
+                        System.out.println("Fresse " + beutetier.getName());
+                        ausgabe(beutetier);
+                    }
+                    else
+                    {
+                        System.out.println(this.getName() + " kann keine Tiere fressen, da er tot ist!");
+                    }
+                }
+                else
+                {
+                    System.out.println(this.getName() + " kann nicht Tiere fressen, wenn sie noch lebendig sind!");
+                }
+            }
+            else
+            {
+                System.out.println(this.getName() + " kann nicht " + beutetier.getName() + " aus einem anderen Zoo fressen!");
+            }
         }
         else
         {
-            System.out.println(this.getName() + "kann leider nicht sich selber fressen!");
+            System.out.println(this.getName() + " kann leider nicht sich selber fressen!");
         }
-        if (beutetier.getZoo() == this.getZoo())
-        {
-            ausgabe(beutetier);
-            return;
-        }
-        else
-        {
-            System.out.println(this.getName() + "kann nicht Tiere aus einem anderen Zoo fressen!");
-        }
-        if (beutetier.istLebendig())
-        {
-            ausgabe(beutetier);
-            return;
-        }
-        else
-        {
-            System.out.println(this.getName() + "kann nicht Tiere fressen, wenn sie nicht .istLebendig() sind!");
-        }
-        if (this.istLebendig())
-        {
-            ausgabe(beutetier);
-            return;
-        }
-        else
-        {
-            System.out.println(this.getName() + "kann keine Tiere fressen, da er tot ist!");
-        }
-    }
+  }
 
-    private void ausgabe(Tier beutetier)
-    {
+  private void ausgabe(Tier beutetier) {
         mageninhalt.add(beutetier);
         this.getZoo().loescheTier(beutetier);
 
         String ausgabeString = "";
 
-        if (beutetier.getClass().getName().equals("Fleischfresser"))
+        if (beutetier.getClass().getName().equals("Wolf") || beutetier.getClass().getName().equals("Hyaene"))
         {
-            ausgabeString = beutetier.getName() + ": Igitt Igitt";
+            ausgabeString += beutetier.getName() + ": Igitt Igitt";
         }
-        else if (beutetier.getClass().getName().equals("Pflanzenfresser"))
+        else if (beutetier.getClass().getName().equals("Hase"))
         {
             Pflanzenfresser pflanzenfresser = (Pflanzenfresser)beutetier;
-            ausgabeString = beutetier.getName() + "'s Lieblingspflanze: " + pflanzenfresser.getLieblingspflanze();
+            ausgabeString += beutetier.getName() + "s Lieblingspflanze: " + pflanzenfresser.getLieblingspflanze() + "\n";
         }
         else if (beutetier.getClass().getName().equals("Reh"))
         {
             Reh reh = (Reh)beutetier;
+            ausgabeString += beutetier.getName() + "s Lieblingspflanze: " + reh.getLieblingspflanze() + "\n";
             if (reh.hasGeweih())
             {
-                ausgabeString = beutetier.getName() + ": Vorsicht! Spitzes Geweih!";
+                ausgabeString += beutetier.getName() + ": Vorsicht! Spitzes Geweih!";
             }
             else
             {
-                ausgabeString = beutetier.getName() + ": Hmm...schoen saftig!";
+                ausgabeString += beutetier.getName() + ": Hmm...schoen saftig!";
             }
         }
 
         System.out.println(ausgabeString);
-    }
+  }
 
-    public String magenInhalt()
-    {
-        String buffer = "Mageninhalt von " + this.getName() + ": ";
+  public String magenInhalt() {
+        String buffer = "";
         for (Tier tier : mageninhalt)
         {
             buffer += tier.getName() + ", ";
         }
-
         return buffer;
-    }
+  }
 
-    public boolean istJeager() { return istJaeger; }
+  public boolean istJeager() {
+ return istJaeger;
+  }
+
 }

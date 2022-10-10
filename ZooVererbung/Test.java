@@ -1,5 +1,7 @@
-public class Test{
-    public static void main (String[] args) {
+
+public class Test {
+  public static void main(String[] args)
+  {
 	Zoo z1 = new Zoo("Koeln");
 	Zoo z2 = new Zoo("Berlin");
 	Wolf lupo1 = new Wolf("Lupo1", 80.0, true, z1);
@@ -31,5 +33,6 @@ public class Test{
 	lupo2.friss(bunny);
 	lupo1.erlege(lupo1);
 	System.out.println (z1.toString());
-    }
+  }
+
 }

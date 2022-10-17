@@ -1,16 +1,19 @@
-
 import java.util.ArrayList;
-public class Fleischfresser extends Tier {
-  private boolean istJaeger;
 
-  private ArrayList<Tier> mageninhalt =  new ArrayList<>();
+public class Fleischfresser extends Tier
+{
+    private boolean istJaeger;
 
-  public Fleischfresser(String name, double gewicht, boolean lebendig, boolean istJaeger, Zoo zoo) {
+    private ArrayList<Tier> mageninhalt = new ArrayList<>();
+
+    public Fleischfresser(String name, double gewicht, boolean lebendig, boolean istJaeger, Zoo zoo)
+    {
         super(name, gewicht, lebendig, zoo);
         this.istJaeger = istJaeger;
-  }
+    }
 
-  public void friss(Tier beutetier) {
+    public void friss(Tier beutetier)
+    {
         if (beutetier != this)
         {
             if (beutetier.getZoo() == this.getZoo())
@@ -41,9 +44,10 @@ public class Fleischfresser extends Tier {
         {
             System.out.println(this.getName() + " kann leider nicht sich selber fressen!");
         }
-  }
+    }
 
-  private void ausgabe(Tier beutetier) {
+    private void ausgabe(Tier beutetier)
+    {
         mageninhalt.add(beutetier);
         this.getZoo().loescheTier(beutetier);
 
@@ -55,12 +59,12 @@ public class Fleischfresser extends Tier {
         }
         else if (beutetier.getClass().getName().equals("Hase"))
         {
-            Pflanzenfresser pflanzenfresser = (Pflanzenfresser)beutetier;
+            Pflanzenfresser pflanzenfresser = (Pflanzenfresser) beutetier;
             ausgabeString += beutetier.getName() + "s Lieblingspflanze: " + pflanzenfresser.getLieblingspflanze() + "\n";
         }
         else if (beutetier.getClass().getName().equals("Reh"))
         {
-            Reh reh = (Reh)beutetier;
+            Reh reh = (Reh) beutetier;
             ausgabeString += beutetier.getName() + "s Lieblingspflanze: " + reh.getLieblingspflanze() + "\n";
             if (reh.hasGeweih())
             {
@@ -73,19 +77,17 @@ public class Fleischfresser extends Tier {
         }
 
         System.out.println(ausgabeString);
-  }
+    }
 
-  public String magenInhalt() {
+    public String magenInhalt()
+    {
         String buffer = "";
         for (Tier tier : mageninhalt)
         {
             buffer += tier.getName() + ", ";
         }
         return buffer;
-  }
+    }
 
-  public boolean istJeager() {
- return istJaeger;
-  }
-
+    public boolean istJeager() { return istJaeger; }
 }

@@ -1,10 +1,12 @@
-
-public class Wolf extends Fleischfresser {
-  public Wolf(String name, double gewicht, boolean lebendig, Zoo zoo) {
+public class Wolf extends Fleischfresser
+{
+    public Wolf(String name, double gewicht, boolean lebendig, Zoo zoo)
+    {
         super(name, gewicht, lebendig, true, zoo);
-  }
+    }
 
-  public void erlege(Tier beutetier) {
+    public void erlege(Tier beutetier)
+    {
         if (beutetier != this)
         {
             if (this.istLebendig())
@@ -28,6 +30,5 @@ public class Wolf extends Fleischfresser {
         {
             System.out.println(this.getName() + " kann nicht sich selber erlegen!");
         }
-  }
-
+    }
 }

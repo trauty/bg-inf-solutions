@@ -1,28 +1,29 @@
+public class Zoo
+{
+    private String name;
 
-public class Zoo {
-  private String name;
+    private Tierliste tierliste;
 
-  private Tierliste tierliste;
-
-  public Zoo(String name) {
+    public Zoo(String name)
+    {
         this.name = name;
         tierliste = new Tierliste();
-  }
+    }
 
-  public boolean nimmTierAuf(Tier zootier) {
+    public boolean nimmTierAuf(Tier zootier)
+    {
         return tierliste.fuegeHinzu(zootier);
-  }
+    }
 
-  public boolean loescheTier(Tier opfer) {
+    public boolean loescheTier(Tier opfer)
+    {
         return tierliste.loesche(opfer);
-  }
+    }
 
-  public String toString() {
+    public String toString()
+    {
         return "Der Zoo " + name + " beherbergt: \n" + tierliste.getNames();
-  }
+    }
 
-  public String getZooName() {
- return name;
-  }
-
+    public String getZooName() { return name; }
 }

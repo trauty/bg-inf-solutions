@@ -1,0 +1,4 @@
+1.Extrem anpassbar, eigene Exceptions mit neuem Verhalten.
+2.Sicher, man muss sich nicht auf return Werte verlassen.
+3.Programm kann weiterlaufen, also auch keine return Werte.
+4.Sehr ausdrucksvoll, Exceptions bringen sehr viele Informationen mit sich.

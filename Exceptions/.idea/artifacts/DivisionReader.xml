@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DivisionReader">
+    <output-path>$PROJECT_DIR$/out/artifacts/DivisionReader.jar</output-path>
+    <root id="archive" name="DivisionReader.jar">
+      <element id="module-output" name="Exceptions" />
+    </root>
+  </artifact>
+</component>

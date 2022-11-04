@@ -15,28 +15,28 @@ public class DivisionReader
             firstDigit = Integer.parseInt(bufRd.readLine());
             secondDigit = Integer.parseInt(bufRd.readLine());
             System.out.println(firstDigit / secondDigit);
-            System.out.println("done");
         }
         catch(FileNotFoundException exc)
         {
             System.out.println("Die Datei wurde nicht gefunden:");
             exc.printStackTrace();
-            System.out.println("done");
             throw new SillyUser("YOU ARE A DUMB ONE, AREN'T YOU?");
         }
         catch (IOException exc)
         {
             System.out.println("Es ist ein Fehler aufgetreten:");
             exc.printStackTrace();
-            System.out.println("done");
             throw new SillyUser("YOU ARE A DUMB ONE, AREN'T YOU?");
         }
         catch (ArithmeticException exc) //Aufgabe 5: Die Exception muss explizit gefangen werden
         {
             System.out.println("Mathematischer Fehler:");
             exc.printStackTrace();
-            System.out.println("done");
             throw new SillyUser("YOU ARE A DUMB ONE, AREN'T YOU?");
+        }
+        finally
+        {
+            System.out.println("done");
         }
     }
 }

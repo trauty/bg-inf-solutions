@@ -1,0 +1,9 @@
+Die Klasse "Servicedesk" hat drei private Listen, für alle "Kunde", "Ticket" und "Mitarbeiter"-Instanzen. 
+Diese Klassen dürfen nicht zu der "Servicedesk"-Klasse navigieren.
+
+Die Klasse "Kunde" hat eine private Liste mit erstellten "Ticket"-Instanzen.
+
+Die Klasse "Mitarbeiter" hat auch eine private Liste mit zu bearbeitenden "Ticket"-Instanzen.
+
+Die Klasse "Ticket" besitzt eine Instanz von "Kunde" und "Mitarbeiter" namens "Erfasser" und sie besitzt 
+keinen oder einen "Bearbeiter" der "Mitarbeiter"-Klasse.

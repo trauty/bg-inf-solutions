@@ -1,0 +1,40 @@
+@startuml Objektdiagramm
+skinparam Style strictuml 
+
+object "Kunde" as kunde {
+    name = "Heinz Berger"
+    email = "heinz.berger@gmail.com"
+    telefon = "0661567432"
+}
+
+object "Ticket" as ticket {
+    ticketId = 17264950
+    erfassungsdatum = "26.02.2020 11:30:05"
+    betreff = "Drucken nicht möglich"
+    beschreibung = "Geht einfach nicht mehr"
+    loesung = ""
+    status = INBEARBEITUNG
+}
+
+object "Erfasser:Mitarbeiter" as mitar1 {
+    name = "Kai Kurz"
+    email = "kurzerknappe@gmx.de"
+    passwort = "stopitgetsomehelp123"
+}
+
+object "Bearbeiter:Mitarbeiter" as mitar2 {
+    name = "Julia Jansen"
+    email = "julia.jansen@gmail.com"
+    passwort = "ichliebealliterationen187"
+}
+
+ticket -- kunde: kunde
+ticket -- mitar2: bearbeiter
+ticket -- mitar1: erfasser
+
+ticket -- kunde: meineTickets
+
+ticket -- mitar1: meineTickets
+ticket -- mitar2: meineTickets
+
+@enduml

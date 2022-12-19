@@ -1,0 +1,4 @@
+1.1.1
+Generalisierung: Der Bucher ist ein Passagier 
+Assoziation: Die Buchung hat eine Fahrt, die Kreuzfahrt hat Buchungen
+Assoziation mit einem nicht navigierbaren Ende: Eine Kreuzfahrt hat ein Schiff

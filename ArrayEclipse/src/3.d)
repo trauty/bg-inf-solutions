@@ -1,0 +1,5 @@
+Nummer 3 d)
+
+durchgaenge[3][4] = 17;
+durchgaenge[2][1]++;
+durchgaenge[1][1] -= 2;

@@ -10,17 +10,14 @@ public class Reservierungssystem
     {
         Block block = spiel.sucheBlock(blockbez);
 
-        for (int x = 0; x < block.getReihen(); x++)
+        for (int x = 0; x < bisPlatz - vonPlatz; x++)
         {
-            for (int y = 0; y < block.getPlatze(); y++)
-            {
-                if (!block.istFrei(x, y)) { return null; }
-            }
+            if (!block.istFrei(reihe, vonPlatz + x - 1)) { return null; }
         }
 
-        for (int i = 0; i <= vonPlatz - bisPlatz; i++)
+        for (int i = 0; i <= bisPlatz - vonPlatz; i++)
         {
-            block.belegePlatz(reihe, vonPlatz + i);
+            block.belegePlatz(reihe, vonPlatz + i - 1);
         }
 
         return new Reservierung(kunde, spiel, block, reihe, vonPlatz, bisPlatz);
@@ -47,9 +44,9 @@ public class Reservierungssystem
             return false;
         }
 
-        for (int i = 0; i <= foundRes.getVonPlatz() - foundRes.getBisPlatz(); i++)
+        for (int i = 0; i <= foundRes.getBisPlatz() - foundRes.getVonPlatz(); i++)
         {
-            foundRes.getBlock().belegePlatz(foundRes.getReihe(), foundRes.getVonPlatz());
+            foundRes.getBlock().belegePlatz(foundRes.getReihe(), foundRes.getVonPlatz() + i - 1);
         }
 
         reservierungen.remove(foundRes);

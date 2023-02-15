@@ -1,0 +1,13 @@
+1.2.1
+Ein Stack ist hier am sinnvollsten, da sich dieser dem LIFO(Last In First Out)-Verfahren bedient, sodass die Züge direkt
+von vorne rausgenommen und erneut einsortiert werden können. Bei einer Queue würde der letzte Zug eines Gleises zuerst entfernt werden.
+Ein Array braucht eine festgelegte Größe, welche man bei den Gleisen nicht immer festlegen kann. Außerdem ist ein Array in diesem Beispiel ineffizient,
+da alle Indezes sich beim Entfernen oder Einfügen verschieben würden.
+
+1.2.2
+Bei der Methode "abstellen()" wird der neue Waggon in der Gleis-Instanz als "erster" gesetzt und die andere Waggon-Instanz muss als Referenz im neuen Waggon
+als "nächster" gespeichert werden.
+Die Methode "entnehmen()" speichert die "erster" Variable zwischen, um dann die Variable "erster" zu der "nächster" Variable des zwischengespeicherten Waggons
+zu setzen. Danach gibt man den zwischengespeicherten Waggon zurück.
+
+ 

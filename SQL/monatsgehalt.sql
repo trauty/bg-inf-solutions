@@ -1,0 +1,26 @@
+CREATE TABLE monatsgehalt (
+	PersNr INT NULL,
+	Monat INT NULL,
+	Jahr YEAR NULL,
+	Auszahlung DECIMAL NULL,
+	Boni DECIMAL NULL,
+	Steuer DECIMAL NULL,
+	SobAbzuege DECIMAL NULL,
+	
+	PRIMARY KEY(PersNr, Monat, Jahr)
+);
+
+INSERT INTO monatsgehalt
+VALUES(1, 7, 2015, 1500, 0, 300, 200);
+INSERT INTO monatsgehalt
+VALUES(1, 8, 2015, 1500, 0, 300, 200);
+INSERT INTO monatsgehalt
+VALUES(2, 7, 2015, 1500, 250, 1500, 500);
+INSERT INTO monatsgehalt
+VALUES(2, 8, 2015, 4500, 0, 1500, 500);
+INSERT INTO monatsgehalt
+VALUES(3, 7, 2015, 3500, 0, 800, 300);
+INSERT INTO monatsgehalt
+VALUES(3, 8, 2015, 3500, 0, 800, 300);
+INSERT INTO monatsgehalt
+VALUES(5, 7, 2015, 3000, 100, 900, 280);

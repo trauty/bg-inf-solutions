@@ -23,16 +23,17 @@ USE `uebung`;
 CREATE TABLE IF NOT EXISTS `abteilung` (
   `AbtNr` int(11) NOT NULL AUTO_INCREMENT,
   `AbtName` text DEFAULT NULL,
+  `Budget` int(11) DEFAULT NULL,
   PRIMARY KEY (`AbtNr`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table uebung.abteilung: ~5 rows (approximately)
-INSERT INTO `abteilung` (`AbtNr`, `AbtName`) VALUES
-	(1, 'Forschung und Entwicklung'),
-	(2, 'Produktion'),
-	(3, 'Vertrieb'),
-	(4, 'Buchhaltung'),
-	(5, 'Geschäftsführung');
+INSERT INTO `abteilung` (`AbtNr`, `AbtName`, `Budget`) VALUES
+	(1, 'Forschung und Entwicklung', 300000),
+	(2, 'Produktion', 200000),
+	(3, 'Vertrieb', 500000),
+	(4, 'Buchhaltung', 50000),
+	(5, 'Geschäftsführung', 800000);
 
 -- Dumping structure for table uebung.mitarbeiter
 CREATE TABLE IF NOT EXISTS `mitarbeiter` (
@@ -47,16 +48,17 @@ CREATE TABLE IF NOT EXISTS `mitarbeiter` (
   `Gehalt` decimal(20,6) DEFAULT NULL,
   `VorgNr` int(11) DEFAULT NULL,
   `Telefon` text DEFAULT NULL,
+  `Jahresgehalt` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`PersNr`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table uebung.mitarbeiter: ~5 rows (approximately)
-INSERT INTO `mitarbeiter` (`PersNr`, `Anrede`, `Nachname`, `Vorname`, `AbtNr`, `Geburtsdatum`, `Eintrittsdatum`, `Krankenkasse`, `Gehalt`, `VorgNr`, `Telefon`) VALUES
-	(1, 'Herr', 'Jakob', 'Michael', 1, '1982-09-10', '2012-09-10', 'AOK', 2000.000000, 2, '069-45678'),
-	(2, 'Frau', 'Vogel', 'Melanie', 1, '1979-09-05', '2003-07-18', 'Techniker', 4500.000000, 4, '06151-62479'),
-	(3, 'Herr', 'Vogel', 'Ernst', 1, '1977-09-19', '2003-07-18', 'Techniker', 2500.000000, 2, NULL),
-	(4, 'Herr', 'Peters', 'Steffen', 5, '1960-04-25', '1983-07-18', 'Debeka', 7500.000000, NULL, '069-568341'),
-	(5, 'Frau', 'Meyer', 'Stefanie', 4, '1967-03-14', '1984-09-15', 'AOK', 3000.000000, 4, '0694-4723894');
+INSERT INTO `mitarbeiter` (`PersNr`, `Anrede`, `Nachname`, `Vorname`, `AbtNr`, `Geburtsdatum`, `Eintrittsdatum`, `Krankenkasse`, `Gehalt`, `VorgNr`, `Telefon`, `Jahresgehalt`) VALUES
+	(1, 'Herr', 'Jakob', 'Michael', 1, '1982-09-10', '2012-09-10', 'AOK', 2000.000000, 2, '069-45678', 24000),
+	(2, 'Frau', 'Vogel', 'Melanie', 1, '1979-09-05', '2003-07-18', 'Techniker', 4500.000000, 4, '06151-62479', 54000),
+	(3, 'Herr', 'Vogel', 'Ernst', 1, '1977-09-19', '2003-07-18', 'Techniker', 2500.000000, 2, NULL, 30000),
+	(4, 'Herr', 'Peters', 'Steffen', 5, '1960-04-25', '1983-07-18', 'Debeka', 7500.000000, NULL, '069-568341', 90000),
+	(5, 'Frau', 'Meier', 'Stefanie', 4, '1967-03-14', '1984-09-15', 'AOK', 3000.000000, 4, '0694-4723894', 36000);
 
 -- Dumping structure for table uebung.monatsgehalt
 CREATE TABLE IF NOT EXISTS `monatsgehalt` (

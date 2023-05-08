@@ -62,8 +62,8 @@ ORDER BY AbtNr;
 SELECT Nachname, Gehalt FROM mitarbeiter 
 WHERE Gehalt > (SELECT AVG(Gehalt) FROM mitarbeiter);
 
-SELECT E.vorname AS "Mitarbeiter",
-M.vorname AS "Vorgesetzter"
-FROM mitarbeiter E 
-LEFT OUTER JOIN mitarbeiter M
-ON E.VorgNr = M.PersNr;
+SELECT m.vorname AS "Mitarbeiter",
+v.vorname AS "Vorgesetzter"
+FROM mitarbeiter m 
+LEFT OUTER JOIN mitarbeiter v
+ON m.VorgNr = v.PersNr;

@@ -18,31 +18,39 @@ public class KleinerServer
         int summand1 = 0, summand2;
 
         boolean interactionStarted = false;
+        boolean calcDone = false;
 
-        while(true)
+        while(true) // Dieser Code ist katastrophal
         {
             String currentPacket = client.readLine();
             System.out.println(currentPacket);
 
-            if (currentPacket.equals("Start") && !interactionStarted)
+            if ((currentPacket.equals("Start") || calcDone) && !interactionStarted)
             {
                 outBuf = "Bitte ersten Summanden schicken\n";
                 interactionStarted = true;
             }
+            else if (sumCount == 0)
+            {
+                outBuf = "Rechner nicht gestartet!\n";
+            }
 
-            else if (isNum(currentPacket) && sumCount == 0 && interactionStarted)
+            if (isNum(currentPacket) && sumCount == 0 && interactionStarted)
             {
                 summand1 = Integer.parseInt(currentPacket);
                 System.out.println(summand1);
                 outBuf = "Bitte zweiten Summanden schicken\n";
                 sumCount++;
             }
-            else
+            else if (!currentPacket.equals("Start") && sumCount == 0 && interactionStarted)
             {
                 outBuf = "Error: Bitte ersten Summanden schicken\n";
             }
-
-            if (isNum(currentPacket) && sumCount == 1)
+            else if (!currentPacket.equals("Start") && !isNum(currentPacket) && sumCount == 1)
+            {
+                outBuf = "Error: Bitte zweiten Summanden schicken\n";
+            }
+            else if (isNum(currentPacket) && sumCount == 1)
             {
                 summand2 = Integer.parseInt(currentPacket);
                 outBuf = "Das Ergebnis lautet: " + (summand1 + summand2) + " || " +
@@ -50,8 +58,30 @@ public class KleinerServer
                 sumCount++;
             }
 
+            if (sumCount == 2 && !isNum(currentPacket))
+            {
+                if (currentPacket.equals("J"))
+                {
+                    calcDone = true;
+                    sumCount = 0;
+                    outBuf = "Bitte ersten Summanden schicken\n";
+                }
+                else if (currentPacket.equals("N"))
+                {
+                    outBuf = "OK: Bye\n";
+                    client.write(outBuf);
+                    break;
+                }
+                else
+                {
+                    outBuf = "Keine moegliche Antwort ausgewaehlt\n";
+                }
+            }
+
             client.write(outBuf);
         }
+
+        client.close();
     }
 
     public static void main(String[] args)

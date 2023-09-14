@@ -25,10 +25,6 @@ public class Client
             {
                 break;
             }
-            /*else if (inBuf.contains("Das Ergebnis lautet:"))
-            {
-                inBuf += server.readLine();
-            }*/
             else
             {
                 System.out.println(inBuf);

@@ -8,7 +8,11 @@ public class Main
     {
         Socket client = new Socket("localhost", 42060);
         client.connect();
-        System.out.println(client.readLine());
+
+        Thread sendHandler = new Thread(new SendHandler(client));
+        sendHandler.start();
+        Thread receiveHandler = new Thread(new ReceiveHandler(client));
+        receiveHandler.start();
     }
 
     public static void main(String[] args)

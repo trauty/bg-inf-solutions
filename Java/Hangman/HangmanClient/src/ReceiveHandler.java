@@ -27,7 +27,7 @@ public class ReceiveHandler implements Runnable
         }
         catch (IOException exc)
         {
-            exc.printStackTrace();
+            System.exit(0);
         }
     }
 }

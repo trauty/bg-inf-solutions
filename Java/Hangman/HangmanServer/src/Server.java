@@ -4,12 +4,10 @@ import socketio.Socket;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
+
 public class Server
 {
     public static ConcurrentHashMap<Integer, ClientHandler> clientHandlers = new ConcurrentHashMap<>();
-
-    public static boolean hasGameBegun = false;
-
     public Server() throws IOException
     {
         ServerSocket serverSocket = new ServerSocket(42060);

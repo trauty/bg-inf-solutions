@@ -22,15 +22,19 @@ public class SendHandler implements Runnable
 
         try
         {
-            socket.write(input.nextLine() + "\n");
             while (!interrupted())
             {
-                socket.write(input.nextLine() + "\n");
+                String nextLine = input.nextLine();
+
+                if (!nextLine.isEmpty())
+                {
+                    socket.write(nextLine + "\n");
+                }
             }
         }
         catch (IOException exc)
         {
-            exc.printStackTrace();
+            System.exit(0);
         }
     }
 }

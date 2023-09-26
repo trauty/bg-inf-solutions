@@ -1,12 +1,16 @@
 import socketio.Socket;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main
 {
     public Main() throws IOException
     {
-        Socket client = new Socket("localhost", 42060);
+        System.out.println("IP: ");
+        Scanner input = new Scanner(System.in);
+        String ip = input.nextLine();
+        Socket client = new Socket(ip, 42060);
         client.connect();
 
         Thread sendHandler = new Thread(new SendHandler(client));

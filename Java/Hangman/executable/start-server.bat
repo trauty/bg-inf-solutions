@@ -1,0 +1,1 @@
+%~dp0/jre/bin/java.exe -jar HangmanServer.jar

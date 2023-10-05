@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a5c85176-8ec9-4140-b775-b3b51fc8e0c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../.$1.2.1.drawio.bkp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.$1.2.2.drawio.bkp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../1.2.1.drawio" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../1.2.2.drawio" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/communication.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BibliotheksystemThreadsClient.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BibliotheksystemThreadsServer/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BibliotheksystemThreadsServer/.idea/libraries/communication.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BibliotheksystemThreadsServer/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BibliotheksystemThreadsServer/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BibliotheksystemThreadsServer/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BibliotheksystemThreadsServer/BibliotheksystemThreadsServer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BibliotheksystemThreadsServer/src/AnfrageThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lib/communication.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Hangman/HangmanServer/.idea/artifacts/HangmanServer.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Hangman/HangmanServer/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Hangman/HangmanServer/HangmanServer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Hangman/HangmanServer/HangmanServer.iml" afterDir="false" />
-    </list>
+    <list default="true" id="a5c85176-8ec9-4140-b775-b3b51fc8e0c5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

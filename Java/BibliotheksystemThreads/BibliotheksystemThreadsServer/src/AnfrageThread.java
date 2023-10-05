@@ -26,7 +26,7 @@ public class AnfrageThread implements Runnable
             while (!anfrage.equals("quit"))
             {
                 anfrage = clientSocket.readLine();
-                if (anfrage.equals("ausleihen"))
+                if (anfrage.contains("ausleihen"))
                 {
                     String[] anfragenInhalt = anfrage.split(" ");
 

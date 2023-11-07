@@ -1,0 +1,33 @@
+\begin{huge}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=2.9cm]
+\node (start) [startstop] {Start};
+\node (io1) [io, below of=start] {./scan.sh};
+\node (pro1) [process, below of=io1] {Scanning...};
+\node (pro2) [process, below of=io1, xshift=6cm] {./scan.sh wiederholen und anderen HDMI Anschluss wählen};
+\node (dec1) [decision, below of=pro1, yshift=-1cm] {Erfolgreich gescannt?};
+\node (dec2) [decision, below of=dec1, yshift=-2.5cm] {An oder aus?};
+\node (io4) [io, below of=dec1, xshift=6cm, yshift=-2.5cm] {./standby.sh};
+\node (io5) [io, below of=dec1, xshift=-6cm, yshift=-2.5cm] {./on.sh};
+\node (pro3) [process, below of=io4] {Geht an};
+\node (pro4) [process, below of=io5] {Geht aus};
+
+\draw [arrow] (start) -- (io1);
+\draw [arrow] (io1) -- (pro1);
+\draw [arrow] (pro1) -- (dec1);
+\draw [arrow] (dec1) -| node[anchor=north, xshift=-2cm] {Nein} (pro2);
+\draw [arrow] (pro2) |- (io1);
+\draw [arrow] (dec1) -- (dec2);
+\draw [arrow] (dec2) -- node[anchor=south] {Anschalten} (io4);
+\draw [arrow] (dec2) -- node[anchor=south] {Ausschalten} (io5);
+\draw [arrow] (io4) -- (pro3);
+\draw [arrow] (io5) -- (pro4);
+\draw [arrow] (pro4) -| (dec2);
+\draw [arrow] (pro3) -| (dec2);
+
+\end{tikzpicture}
+\end{figure}
+
+\end{huge}

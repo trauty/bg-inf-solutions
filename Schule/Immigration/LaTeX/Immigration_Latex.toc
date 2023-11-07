@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Native Americans}{3}{section.1}%
+\contentsline {section}{\numberline {2}European Discovery}{3}{section.2}%
+\contentsline {section}{\numberline {3}First European Settlers}{3}{section.3}%
+\contentsline {section}{\numberline {4}Slaves in America}{4}{section.4}%
+\contentsline {section}{\numberline {5}Immigration after founding of the United States}{4}{section.5}%
+\contentsline {section}{\numberline {6}Industrial Revolution intensifies}{5}{section.6}%
+\contentsline {section}{\numberline {7}First anti-immigrant measures}{5}{section.7}%
+\contentsline {section}{\numberline {8}Current state of immigration in the US}{6}{section.8}%

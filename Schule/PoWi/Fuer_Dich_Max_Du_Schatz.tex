@@ -1,0 +1,270 @@
+\documentclass[a4paper]{article}
+
+\input{pack}
+
+\begin{document}
+\input{template}
+
+\tableofcontents
+
+
+\clearpage
+
+\section{Aufgabenstellung}
+
+Die Aufgabenstellung gab vor den CEC-Client zu installieren und einzurichten. Dafür muss man zunächst im bereits eingeloggten Terminal mit funktionierender WLAN-Verbindung folgendes eingeben:
+\clearpage
+
+\section{Jonas}
+\subsection{SD-Karte flashen}
+Um den Raspberry Pi betriebsfähig zu machen, muss zunächst ein Betriebssystem installiert werden. Dazu muss dieses mithilfe eines Programms dieses auf eine Micro-SD Karte geschrieben werden. Für diesen Prozess kann man den 'Raspberry Pi Imager' der Raspberry Pi Foundation nutzen. Als Betriebssystem wurde zunächst 'Ubuntu Server 21.10' verwendet. Dann wurde allerdings "Raspberry Pi OS" genutzt, da dieses Betriebssystem Treiber für den Raspberry Pi mit sich bringt.
+\subsection{Kompatibler Fernseher organisieren}
+Die nächste Aufgabe bestand darin einen Fernseher zu finden, welcher CEC-unterstützt. Unter Fernsehern ist dies eine weit verbreitete Funktion. Es ist zunächst nach einer Alternative, die in dem Raum zur Verfügung steht gesucht worden. Zunächst haben wir den Beamer genutzt.  Auf der Seite des Herstellers stand, dass der Beamer CEC-kompatibel sei. Was sich allerdings später als falsch herausstellte.
+Deshalb wurde ein anderer Bildschirm zur Verfügung gestellt.
+\clearpage
+
+\section{Lionel}
+
+\subsection{Installation des CEC-Clients}
+
+\begin{center}
+\includegraphics[scale=0.5]{./assets/cecinstall.png}
+\end{center}
+
+\noindent
+
+Nachdem das erfolgt ist, wurde der CEC-Client installiert. \\
+
+\noindent
+
+Um einem CEC fähigen Gerät Signale bzw. Befehle per Terminal zu versenden, scant man zunächst nach dem Gerätenamen. Das macht man mit folgendem Befehl, welchen man in das Terminal eingeben muss.
+
+Sudo bedeutet 'Superuser do'. Damit kann man Befehle mit allen Rechten ausführen.
+
+\subsection{Einrichten des CEC-Clients}
+
+\begin{center}
+\includegraphics[scale=0.5]{./assets/cececho.png}
+\end{center}
+
+echo und der dazugehörige Strich bedeuten im Prinzip, dass man den Befehl direkt 
+in die CEC-Software überführt, ohne diese zu starten. scan ist hierbei der auszuführende Befehl, -s als Signal, dass die Software nur einen Befehl auszuführen hat und -d 1, damit die Software bei Errors den Error direkt ausgibt. Nachdem der Befehl erfolgte, erhielten wir eine Ausgabe in der Form:
+
+\begin{center}
+\includegraphics[scale=0.4]{./assets/cecdevice.png}
+\end{center}
+
+Man musste nun nach der Device-Adresse schauen, die nicht den Namen device 1: Recorder 1 hatte, da diese der Raspberry Pi selbst war. In unserem Fall hatte das Device die Addresse 0.0.0.0. Durch die nun herausgefundene Addresse, konnte man dem CEC fähigen Gerät direkt Befehle übermitteln, die das Gerät dann ausführt. 
+Damit war der Prozess des Installierens und Einrichtens soweit abgeschlossen. Man musste nur noch überprüfen, ob die nun zu sendenden Befehle Fehlermeldungen verursachen würden. Man überprüft daher folgende 2 Befehle: 
+
+\begin{center}
+\includegraphics[scale=0.4]{./assets/cecon.png}
+\end{center}
+
+(Zum Einschalten des Geräts.)
+
+\begin{center}
+\includegraphics[scale=0.4]{./assets/cecstandby.png}
+\end{center}
+
+(Zum Ausschalten des Geräts.) \\
+
+Das Ausschalten hat soweit funktioniert, jedoch ergaben sich Schwierigkeiten beim anschließenden Einschalten. Wir haben zunächst eine SSH Verbindung mit dem Macbook versucht einzurichten, um es durch eine Dritte Quelle ein- und auszuschalten. Nachdem das Ausschalten uns dann die Fehlermeldung Segmantation fault ausgegeben hat, war der fix für den Segmentation fault hier ein eigenes Netzwerk zu erstellen und den Raspberry Pi und den Macbook zu verbinden. Nachdem sich der Beamer danach immer noch nicht einschalten ließ, überprüften wir die Funktionalität des Beamers. Die Analyse ergab, dass der Beamer  nicht  dafür geeignet ist.
+
+\clearpage
+
+\section{Julius}
+\subsection{Paketlisten aktualisieren}
+Nach dem eine Verbindung aufgebaut wurde müssen die Paketlisten auf den neusten Stand gebracht werden.
+Zuerst werden mit dem Befehl \\
+\textsl{sudo apt update}\\
+Die noch fehlenden Pakete gesucht.\\
+Als nächstes werden die fehlenden Pakete mit \\
+\textsl{sudo apt upgrade}\\
+heruntergeladen und installiert. Sind alle Pakete vorhanden, so gibt das Gerät dies aus.
+\subsection{HDMI-CEC einrichten}
+Nachdem der Client installiert wurde und der Raspberry Pi mit einen Gerät verbunden ist muss das verbunden Gerät identifiziert werden und die Kompatibilität bestätigt werden.
+Dazu muss der Befehl\\
+\textsl{echo 'scan' | cec-client -s -d 1}\\
+ausgeführt werden. Dieser gibt eine Liste alle Verbunden Geräte mit ihrer Nummer, Deviceadress, CEC Version und anderem aus. An Hand der gegebenen Information kann man den verbunden Bildschirm erkennen. Sonst sind jedoch nur die drei genannten Befehle relevant. Nummer und Adresse werden sie für die CEC-Befehle später noch benötigt, die CEC-Version ist wichtig, da unterschiedliche Versionen zu Problemen führen können.
+\section{Funktionalität überprüfen}
+Wenn das Gerät indentifiziert wurde und kompatibel ist muss sichergegangen werden, dass alles wie geplant Funktioniert. Dazu nutzt man Befehle um das verbundene Gerät an zu schalten oder in den Standby-Modus zu setzen. \\
+Das Gerät funktioniert wie geplant und schaltet sich mit \\
+\textsl{standby sh}\\
+in den Standby-Modus.\\
+Mit dem Befehl:\\
+\textsl{on sh}\\
+schaltet sich das Gerät ein.\\
+Auch die anderen Befehle funktionieren wie geplant.
+\clearpage
+
+\section{Maximilian und Benedikt}
+
+\subsection{Pakete installieren und aktualisieren}
+Zuerst sucht man nach neuen Paketen mit diesen Commands:
+\begin{lstlisting}
+
+sudo apt update
+sudo apt upgrade
+
+\end{lstlisting}
+
+\noindent
+Hierzu verwenden wir das Advanced Packaging Tool, da wir auf einem Debian basierendem System die Pakete installieren.
+\break
+\break
+Daraufhin installierten wir das cec-utils Paket, welches uns ermöglichen soll, CEC-fähige Geräte zu kontrollieren. 
+\begin{lstlisting}
+
+sudo apt install cec-utils
+
+|
+
+echo 'scan' | cec-client -s -d 1
+
+|
+
+\end{lstlisting}
+\noindent
+
+Zuerst scannt man die angeschlossen Geräte und findet heraus, welches Geräte der Fernseher ist:
+
+\begin{lstlisting}
+opening a connection to the CEC adapter...
+requesting CEC bus information ...
+CEC bus information
+===================
+device #0: TV
+address:       0.0.0.0
+active source: no
+vendor:        Phillips
+osd string:    TV
+CEC version:   1.3a
+power status:  standby
+language:      ???
+
+
+device #1: Recorder 1
+address:       1.0.0.0
+active source: no
+vendor:        Pulse Eight
+osd string:    CECTester
+CEC version:   1.4
+power status:  on
+language:      eng
+
+
+\end{lstlisting}
+\noindent
+In unserem Fall ist der Fernseher mit der Adresse 0.0.0.0 versehen.
+Mit diesen Commands kann man den Fernseher kontrollieren, zum Beispiel:
+\begin{lstlisting}
+Anschalten: echo 'on 0.0.0.0' | cec-client -s -d 1
+Ausschalten: echo 'standby 0.0.0.0' | cec-client -s -d 1
+\end{lstlisting}
+\noindent
+Damit man diese Commands nicht immer ausschreiben muss, haben wir Scripts erstellt, die das für einen machen:
+\begin{lstlisting}
+Anschalten: ./on.sh
+Ausschalten: ./standby.sh
+Scan: ./scan.sh
+\end{lstlisting}
+\newpage
+\noindent
+\subsection{SSH und Verbindung}
+Falls man sich über SSH verbinden möchte und dann zum Beispiel über das Smartphone den Fernseher steuern möchte, muss man im \textbf{gleichen Netzwerk} sein und nachschauen, welche IP-Adresse der Raspberry Pi hat:
+\begin{lstlisting}
+ip addr
+
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether e4:5f:01:3a:de:c5 brd ff:ff:ff:ff:ff:ff
+3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether e4:5f:01:3a:de:c6 brd ff:ff:ff:ff:ff:ff
+    inet --> 192.168.137.121/24 <-- brd 192.168.137.255 scope global dynamic noprefixroute wlan0
+       valid_lft 603411sec preferred_lft 452211sec
+    inet6 fe80::53a7:d57b:1adb:9276/64 scope link
+       valid_lft forever preferred_lft forever
+
+\end{lstlisting}
+
+Auf dem Raspberry Pi ist Raspbian installiert, daher kann man sich einfach mit dem Netzwerk verbinden:
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{./assets/wlan.png}
+\end{figure}
+
+
+\clearpage
+\section{Programmablaufplan}
+
+\begin{huge}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=2.9cm]
+\node (start) [startstop] {Start};
+\node (io1) [io, below of=start] {./scan.sh};
+\node (pro1) [process, below of=io1] {Scanning...};
+\node (pro2) [process, below of=io1, xshift=6cm] {./scan.sh wiederholen und anderen HDMI Anschluss wählen};
+\node (dec1) [decision, below of=pro1, yshift=-1cm] {Erfolgreich gescannt?};
+\node (dec2) [decision, below of=dec1, yshift=-2.5cm] {An oder aus?};
+\node (io4) [io, below of=dec1, xshift=6cm, yshift=-2.5cm] {./standby.sh};
+\node (io5) [io, below of=dec1, xshift=-6cm, yshift=-2.5cm] {./on.sh};
+\node (pro3) [process, below of=io4] {Geht an};
+\node (pro4) [process, below of=io5] {Geht aus};
+
+\draw [arrow] (start) -- (io1);
+\draw [arrow] (io1) -- (pro1);
+\draw [arrow] (pro1) -- (dec1);
+\draw [arrow] (dec1) -| node[anchor=north, xshift=-2cm] {Nein} (pro2);
+\draw [arrow] (pro2) |- (io1);
+\draw [arrow] (dec1) -- (dec2);
+\draw [arrow] (dec2) -- node[anchor=south] {Anschalten} (io4);
+\draw [arrow] (dec2) -- node[anchor=south] {Ausschalten} (io5);
+\draw [arrow] (io4) -- (pro3);
+\draw [arrow] (io5) -- (pro4);
+\draw [arrow] (pro4) -| (dec2);
+\draw [arrow] (pro3) -| (dec2);
+
+\end{tikzpicture}
+\end{figure}
+
+\end{huge}
+
+\clearpage
+
+\section{Technologieplan}
+
+\begin{huge}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=2.9cm]
+
+\node (steckdose) [process] {Steckdose};
+\node (raspberry) [process, below of=steckdose, xshift=5cm] {Raspberry Pi};
+\node (tv) [process, below of=steckdose, xshift=-5cm] {Fernseher};
+\node (phone) [process, below of=raspberry] {Smartphone};
+
+\draw [arrow] (steckdose) -- node[anchor=north, yshift=-0.2cm] {Strom} (raspberry);
+\draw [arrow] (steckdose) -- node[anchor=north, yshift=-0.2cm] {Strom} (tv);
+\draw [arrow] (tv) -- node[anchor=north, yshift=-0.2cm] {HDMI} (raspberry);
+\draw [arrow] (raspberry) -- node[anchor=east, yshift=-0.2cm] {SSH} (phone);
+
+\end{tikzpicture}
+\end{figure}
+
+\end{huge}
+
+\clearpage
+
+\section{Quellen}
+\begin{description}
+\item \href{https://pimylifeup.com/raspberrypi-hdmi-cec/}{Anleitung zur Installation des CEC-Clients}
+\end{description}
+\end{document}

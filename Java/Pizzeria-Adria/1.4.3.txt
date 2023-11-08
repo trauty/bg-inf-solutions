@@ -1,0 +1,5 @@
+Die Zugriffsmethoden der Threads sollten mit dem Schlüsselwort "synchronized" in der Signatur versehen werden,
+um die Sichtbarkeit der Daten synchronisiert zu gestalten.
+
+Falls es nicht genug Bestellungen gibt oder der Andrang etwas gering ist, können unbenutze Threads mit wait() zum Stillstand gebracht werden und bei
+Bedarf mit notify() oder notifyAll(), falls man alle Threads nach einer Schließung wieder erwecken will, starten.

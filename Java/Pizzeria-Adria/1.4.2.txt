@@ -1,0 +1,5 @@
+1. Mehrere Köche könnten eine Bestellung betrachten.
+2. Es können zu viele Bestellungen aufgenommen werden, da die Queue einen Wert Besitzt, der die Anzahl an Bestellungen 
+zählt.
+3. Es können Referenzen zu Bestellungen verloren gehen.
+4. Es kann zu duplizierten Bestellungen kommen.

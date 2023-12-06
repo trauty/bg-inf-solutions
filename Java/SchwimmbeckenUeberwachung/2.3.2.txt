@@ -1,0 +1,4 @@
+Ein Thread ist ein Programmstück, das nebenläufig ausgeführt werden kann. Dadurch kann gleichzeitig neben dem Hauptthread Programmcode ausgeführt werden wodurch man nicht
+auf den Hauptthread warten muss.
+Die Überwachen-Methode sollte als ein Thread realisiert werden, da diese Methode im Hintergrund überprüft, ob das Wasser die Soll-Temperatur hält. 
+Dabei sollte der Hauptthread weiter das System verwalten, ohne das dieser von der ueberwache()-Methode aufgehalten wird.

@@ -1,0 +1,30 @@
+@startuml Zustandsdiagramm
+
+left to right direction
+
+[*] -> NichtsGedrueckt
+NichtsGedrueckt --> Schalter1Gedrueckt : 1/XXX
+Schalter1Gedrueckt --> Schalter1GedruecktZweiMal : 1/0XX
+Schalter1GedruecktZweiMal --> Schalter1GedruecktZweiMal : 1/0XX
+NichtsGedrueckt --> Schalter2Gedrueckt : 2/XXX
+Schalter2Gedrueckt --> Schalter2GedruecktZweiMal : 2/X0X
+Schalter2GedruecktZweiMal --> Schalter2GedruecktZweiMal : 2/X0X
+NichtsGedrueckt --> Schalter3Gedrueckt : 3/XXX
+Schalter3Gedrueckt --> Schalter3GedruecktZweiMal : 3/XX0
+Schalter3GedruecktZweiMal --> Schalter3GedruecktZweiMal : 3/XX0
+
+Schalter1Gedrueckt --> Schalter2Gedrueckt : 2/XXX
+Schalter1Gedrueckt --> Schalter3Gedrueckt : 3/XXX
+Schalter2Gedrueckt --> Schalter1Gedrueckt : 1/XXX
+Schalter2Gedrueckt --> Schalter3Gedrueckt : 3/XXX
+Schalter3Gedrueckt --> Schalter1Gedrueckt : 1/XXX
+Schalter3Gedrueckt --> Schalter2Gedrueckt : 2/XXX
+
+Schalter1GedruecktZweiMal --> Schalter2Gedrueckt : 2/XXX
+Schalter1GedruecktZweiMal --> Schalter3Gedrueckt : 3/XXX
+Schalter2GedruecktZweiMal --> Schalter3Gedrueckt : 3/XXX
+Schalter2GedruecktZweiMal --> Schalter1Gedrueckt : 1/XXX
+Schalter3GedruecktZweiMal --> Schalter1Gedrueckt : 1/XXX
+Schalter3GedruecktZweiMal --> Schalter2Gedrueckt : 2/XXX
+
+@enduml
